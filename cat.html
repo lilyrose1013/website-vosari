@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Cat</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar__container">
+      <a href="/" id="navbar__logo">Lily-Rose Vosari</a>
+    </div>
+  </nav>
+  <main class="content center">
+    <h1>Your Random Cat </h1>
+    <p id="catCaption" style="font-size: 1.2rem; margin: 10px 0;"></p>
+    <div id="catContainer">
+      <p>Loading cat...</p>
+    </div>
+    <br>
+    <button onclick="getAnotherCat()">Get Another Cat</button>
+    <button onclick="window.location.href='Current_Work.html'">Go Back</button>
+  </main>
+  <script>
+    const container = document.getElementById('catContainer');
+    const captionElement = document.getElementById('catCaption');
+
+    function displayCatImage(url) {
+      container.innerHTML = `<img src="${url}" alt="Random Cat" style="max-width: 100%; border-radius: 12px;" />`;
+    }
+
+    function getAnotherCat() {
+      fetch('https://api.thecatapi.com/v1/images/search?limit=1', {
+        headers: {
+          'x-api-key': 'ylX4blBYT9FaoVd6OhvR'
+        }
+      })
+        .then(res => res.json())
+        .then(data => {
+          const imageUrl = data[0]?.url;
+          if (imageUrl) {
+            displayCatImage(imageUrl);
+          } else {
+            container.innerHTML = '<p>No image found. Please try again.</p>';
+          }
+        })
+        .catch(err => {
+          container.innerHTML = '<p>Error: ' + err.message + '</p>';
+        });
+    }
+
+    const catUrl = sessionStorage.getItem('catImageUrl');
+    const catCaption = sessionStorage.getItem('catCaption');
+
+    if (catCaption) {
+      captionElement.textContent = catCaption;
+    }
+
+    if (catUrl) {
+      displayCatImage(catUrl);
+    } else {
+      getAnotherCat();
+    }
+  </script>
+</body>
+</html>

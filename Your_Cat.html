@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Cat</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .cat-wrapper {
+      position: relative;
+      display: inline-block;
+      max-width: 90%;
+      margin-top: 20px;
+    }
+
+    .cat-wrapper img {
+      width: 100%;
+      border-radius: 12px;
+    }
+
+    .caption-overlay {
+      position: absolute;
+      bottom: 15px;
+      left: 15px;
+      right: 15px;
+      text-align: center;
+      color: hotpink !important;
+      font-size: 2.5rem;
+      font-weight: bold;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+    }
+
+    .center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      min-height: 100vh;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <main class="center">
+    <h1>YourCat</h1>
+    <div id="catContainer" class="cat-wrapper"></div>
+    <button onclick="window.location.href='Current_Work.html'">Back</button>
+  </main>
+
+  <script>
+    const container = document.getElementById('catContainer');
+    const catUrl = sessionStorage.getItem('catImageUrl');
+    const catCaption = sessionStorage.getItem('catCaption') || 'Your caption here';
+
+    if (catUrl) {
+      container.innerHTML = `
+        <img src="${catUrl}" alt="Cat Image" />
+        <div class="caption-overlay">${catCaption}</div>
+      `;
+    } else {
+      container.innerHTML = '<p>No cat image found. Please go back and try again.</p>';
+    }
+  </script>
+</body>
+</html>
+

@@ -12,6 +12,17 @@
 
   <!-- CSS -->
   <link rel="stylesheet" href="style.css" />
+  <style>
+    #divinationButton {
+      font-size: 2.5rem;
+      padding: 1rem 2rem;
+      background-color: hotpink !important;
+      color: white;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
 
@@ -48,15 +59,53 @@
     <section class="project-list">
       <article class="project">
         <h2>Project 1: Interactive Typography</h2>
-        <p>An exploration into motion-based, user-reactive type design using code and sensors.</p>
+        <p>An.</p>
       </article>
 
       <article class="project">
         <h2>Project 2: Experimental Camera</h2>
-        <p>A prototype camera made using Arduino and recycled lenses to challenge how we frame digital media.</p>
+        <p>Abb.</p>
+      </article>
+
+      <article class="project">
+        <h2>Project 3: Quiz</h2>
+        <p>...</p>
+      </article>
+
+      <article class="project">
+        <h2>Project 4: Divination</h2>
+        <div class="column center">
+          <h2><button onClick="divinationExp()" id="divinationButton">CAT</button></h2>
+          <br>
+        </div>
       </article>
     </section>
   </main>
+
+  <script>
+    const API_KEY = 'ylX4blBYT9FaoVd6OhvR';
+
+    function divinationExp() {
+      fetch('https://api.thecatapi.com/v1/images/search?limit=1', {
+        headers: {
+          'x-api-key': API_KEY
+        }
+      })
+        .then(res => res.json())
+        .then(data => {
+          const imageUrl = data[0]?.url;
+          if (imageUrl) {
+            sessionStorage.setItem('catImageUrl', imageUrl);
+            window.location.href = 'Caption_Input.html';
+          } else {
+            alert('No image found.');
+          }
+        })
+        .catch(err => {
+          alert('Error: ' + err.message);
+        });
+    }
+  </script>
 
 </body>
 </html>
