@@ -8,12 +8,13 @@
 </head>
 <body>
   <main class="content center">
-    <h1>Caption Your Cat</h1>
-    <img id="catImage" src="" alt="Random Cat" style="max-width: 100%; border-radius: 12px;"/>
+    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+      <h1 style="margin: 0;">Caption Your Cat</h1>
+      <button onclick="submitCaption()" style="padding: 0.5rem 1rem; font-size: 1rem;">Submit Caption</button>
+    </div>
+    <img id="catImage" src="" alt="Random Cat" style="max-width: 100%; border-radius: 12px; margin-top: 1rem;" />
     <br><br>
     <input type="text" id="captionInput" placeholder="Type your caption..." style="padding: 10px; width: 80%; font-size: 1rem;" />
-    <br><br>
-    <button onclick="submitCaption()">Submit Caption</button>
   </main>
 
   <script>
@@ -23,7 +24,6 @@
     if (imageUrl) {
       imageEl.src = imageUrl;
     } else {
-      // fallback fetch if user opened this page directly
       fetch('https://api.thecatapi.com/v1/images/search?limit=1', {
         headers: {
           'x-api-key': 'ylX4blBYT9FaoVd6OhvR'
