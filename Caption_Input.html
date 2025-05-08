@@ -35,6 +35,17 @@
       margin-top: 1rem;
     }
 
+    textarea {
+      width: 100%;
+      height: 80px;
+      margin-top: 1rem;
+      padding: 0.5rem;
+      font-size: 1rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      resize: vertical;
+    }
+
     p.caption {
       margin-top: 1.5rem;
       font-size: 1.2rem;
@@ -44,6 +55,8 @@
 
     .button-container {
       margin-top: 2rem;
+      display: flex;
+      gap: 1rem;
     }
 
     button {
@@ -65,6 +78,10 @@
   <main class="content">
     <h1>Your Captioned Cat</h1>
     <img id="catImage" src="" alt="Your Cat" />
+
+    <textarea id="captionInput" placeholder="Type your caption here..."></textarea>
+    <button onclick="setCaption()">Set Caption</button>
+
     <p id="captionText" class="caption"></p>
 
     <div class="button-container">
@@ -82,6 +99,15 @@
 
     if (caption) {
       document.getElementById('captionText').textContent = caption;
+      document.getElementById('captionInput').value = caption;
+    }
+
+    function setCaption() {
+      const newCaption = document.getElementById('captionInput').value.trim();
+      if (newCaption) {
+        sessionStorage.setItem('catCaption', newCaption);
+        document.getElementById('captionText').textContent = newCaption;
+      }
     }
 
     function goBack() {
