@@ -55,6 +55,7 @@
       margin-top: 2rem;
       display: flex;
       gap: 1rem;
+      flex-wrap: wrap;
     }
 
     button {
@@ -76,8 +77,8 @@
   <main class="content">
     <h1>Your Captioned Cat</h1>
     <img id="catImage" src="" alt="Your Cat" />
-    <p id="captionText" class="caption"></p>
 
+    <p id="captionText" class="caption" style="display: none;"></p>
     <textarea id="captionInput" placeholder="Type your caption here..."></textarea>
 
     <div class="button-container">
@@ -90,19 +91,30 @@
     const imageUrl = sessionStorage.getItem('catImageUrl');
     const caption = sessionStorage.getItem('catCaption');
 
+    const captionText = document.getElementById('captionText');
+    const captionInput = document.getElementById('captionInput');
+
     if (imageUrl) {
       document.getElementById('catImage').src = imageUrl;
     }
 
-    if (caption) {
-      document.getElementById('captionText').textContent = caption;
+    if (caption && caption.trim() !== '') {
+      captionText.textContent = caption;
+      captionText.style.display = 'block';
+      captionInput.style.display = 'none';
+    } else {
+      captionText.style.display = 'none';
+      captionInput.style.display = 'block';
     }
 
     function saveCaption() {
-      const newCaption = document.getElementById('captionInput').value;
-      sessionStorage.setItem('catCaption', newCaption);
-      document.getElementById('captionText').textContent = newCaption;
-      document.getElementById('captionInput').value = '';
+      const newCaption = captionInput.value.trim();
+      if (newCaption) {
+        sessionStorage.setItem('catCaption', newCaption);
+        captionText.textContent = newCaption;
+        captionText.style.display = 'block';
+        captionInput.style.display = 'none';
+      }
     }
 
     function goBack() {
