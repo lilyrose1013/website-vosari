@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Caption Your Cat</title>
+  <title>Your Captioned Cat</title>
   <link rel="stylesheet" href="style.css" />
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f9f9f9;
+      background-color: #ffe6f0;
+      font-family: "Inconsolata", monospace;
     }
 
     main.content {
@@ -35,28 +35,23 @@
       margin-top: 1rem;
     }
 
-    input[type="text"] {
-      padding: 10px;
-      width: 80%;
-      font-size: 1rem;
+    p.caption {
       margin-top: 1.5rem;
-      border: 1px solid #ccc;
-      border-radius: 6px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #e91e63;
     }
 
     .button-container {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      margin-top: 1rem;
+      margin-top: 2rem;
     }
 
     button {
-      padding: 0.5rem 1.5rem;
+      padding: 0.75rem 1.5rem;
       font-size: 1rem;
-      border: none;
       background-color: #e91e63;
       color: white;
+      border: none;
       border-radius: 6px;
       cursor: pointer;
     }
@@ -68,43 +63,31 @@
 </head>
 <body>
   <main class="content">
-    <h1>Caption Your Cat</h1>
-
-    <img id="catImage" src="" alt="Random Cat" />
-
-    <input type="text" id="captionInput" placeholder="Type your caption..." />
+    <h1>Your Captioned Cat</h1>
+    <img id="catImage" src="" alt="Your Cat" />
+    <p id="captionText" class="caption"></p>
 
     <div class="button-container">
-      <button onclick="submitCaption()">Submit Caption</button>
+      <button onclick="goBack()">Try Another</button>
     </div>
   </main>
 
   <script>
-    const imageEl = document.getElementById('catImage');
     const imageUrl = sessionStorage.getItem('catImageUrl');
+    const caption = sessionStorage.getItem('catCaption');
 
     if (imageUrl) {
-      imageEl.src = imageUrl;
-    } else {
-      fetch('https://api.thecatapi.com/v1/images/search?limit=1', {
-        headers: {
-          'x-api-key': 'ylX4blBYT9FaoVd6OhvR'
-        }
-      })
-        .then(res => res.json())
-        .then(data => {
-          const url = data[0]?.url;
-          if (url) {
-            imageEl.src = url;
-            sessionStorage.setItem('catImageUrl', url);
-          }
-        });
+      document.getElementById('catImage').src = imageUrl;
     }
 
-    function submitCaption() {
-      const caption = document.getElementById('captionInput').value;
-      sessionStorage.setItem('catCaption', caption);
-      window.location.href = 'Your_Cat.html';
+    if (caption) {
+      document.getElementById('captionText').textContent = caption;
+    }
+
+    function goBack() {
+      sessionStorage.removeItem('catImageUrl');
+      sessionStorage.removeItem('catCaption');
+      window.location.href = 'index.html';
     }
   </script>
 </body>
