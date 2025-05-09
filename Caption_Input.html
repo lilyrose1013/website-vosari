@@ -42,8 +42,19 @@
       color: #e91e63;
     }
 
+    textarea {
+      width: 100%;
+      padding: 0.75rem;
+      margin-top: 1rem;
+      font-size: 1rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
     .button-container {
       margin-top: 2rem;
+      display: flex;
+      gap: 1rem;
     }
 
     button {
@@ -67,7 +78,10 @@
     <img id="catImage" src="" alt="Your Cat" />
     <p id="captionText" class="caption"></p>
 
+    <textarea id="captionInput" placeholder="Type your caption here..."></textarea>
+
     <div class="button-container">
+      <button onclick="saveCaption()">Save Caption</button>
       <button onclick="goBack()">Try Another</button>
     </div>
   </main>
@@ -82,6 +96,13 @@
 
     if (caption) {
       document.getElementById('captionText').textContent = caption;
+    }
+
+    function saveCaption() {
+      const newCaption = document.getElementById('captionInput').value;
+      sessionStorage.setItem('catCaption', newCaption);
+      document.getElementById('captionText').textContent = newCaption;
+      document.getElementById('captionInput').value = '';
     }
 
     function goBack() {
