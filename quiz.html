@@ -15,28 +15,108 @@
 
   <style>
     body {
-      font-family: sans-serif;
+      font-family: 'Inconsolata', monospace;
       padding: 2rem;
-      background: #f5f5f5;
+      margin: 0;
+      background: url('fountain-bg.png') no-repeat center center fixed;
+      background-size: cover;
+      color: #ff69b4;
+    }
+    h1 {
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #ff69b4;
     }
     .question {
       margin-bottom: 1.5rem;
+      width: 100%;
     }
     .question h3 {
       margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+      color: #ff69b4;
+    }
+    .answers {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
     }
     .answers button {
-      margin: 0.25rem;
+      background-color: #fff;
+      border: 2px solid #ff69b4;
+      color: #ff69b4;
+      border-radius: 5px;
       padding: 0.5rem 1rem;
       cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+    .answers button:hover {
+      background-color: #ffe4f0;
+      transform: scale(1.05);
     }
     .answers button.selected {
-      background-color: yellow;
-      color: black;
+      background-color: #ff69b4;
+      color: #fff;
+      font-weight: bold;
     }
     #submit {
       margin-top: 2rem;
-      padding: 0.5rem 2rem;
+      padding: 0.75rem 2rem;
+      font-size: 1rem;
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    #submit:hover {
+      background-color: #d83b87;
+      transform: scale(1.05);
+    }
+    .quiz-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      max-width: 650px;
+      margin: 2rem auto;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 2rem;
+      border-radius: 1.5rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(4px);
+    }
+    .navbar {
+      background-color: rgba(255, 255, 255, 0.85);
+      padding: 1rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .navbar__container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .navbar__menu {
+      display: flex;
+      gap: 1rem;
+      list-style: none;
+      padding: 0;
+    }
+    .navbar__links {
+      text-decoration: none;
+      color: #ff69b4;
+      font-weight: 600;
+    }
+    .navbar__links:hover {
+      color: #d83b87;
     }
   </style>
 </head>
@@ -57,77 +137,77 @@
       </ul>
     </div>
   </nav>
-  <h1>Which Bloomburrow Character Are You?</h1>
-  <form id="quiz">
-    <div class="question">
-      <h3>1. Your strength?</h3>
-      <div class="answers">
-        <button type="button" data-answer="Mabel">Brave</button>
-        <button type="button" data-answer="Flowerfoot">Graceful</button>
-        <button type="button" data-answer="Whiskervale">Clever</button>
-        <button type="button" data-answer="Steelburr">Fierce</button>
+  <div class="quiz-container">
+    <h1>Which Bloomburrow Character Are You?</h1>
+    <form id="quiz">
+      <div class="question">
+        <h3>1. Your strength?</h3>
+        <div class="answers">
+          <button type="button" data-answer="Mabel">Brave</button>
+          <button type="button" data-answer="Flowerfoot">Graceful</button>
+          <button type="button" data-answer="Whiskervale">Clever</button>
+          <button type="button" data-answer="Steelburr">Fierce</button>
+        </div>
       </div>
-    </div>
-    <div class="question">
-      <h3>2. Favorite place?</h3>
-      <div class="answers">
-        <button type="button" data-answer="Mabel">Village</button>
-        <button type="button" data-answer="Flowerfoot">Meadow</button>
-        <button type="button" data-answer="Whiskervale">River</button>
-        <button type="button" data-answer="Steelburr">Battlefield</button>
+      <div class="question">
+        <h3>2. Favorite place?</h3>
+        <div class="answers">
+          <button type="button" data-answer="Mabel">Village</button>
+          <button type="button" data-answer="Flowerfoot">Meadow</button>
+          <button type="button" data-answer="Whiskervale">River</button>
+          <button type="button" data-answer="Steelburr">Battlefield</button>
+        </div>
       </div>
-    </div>
-    <div class="question">
-      <h3>3. Pick a weapon:</h3>
-      <div class="answers">
-        <button type="button" data-answer="Mabel">Sword</button>
-        <button type="button" data-answer="Flowerfoot">Leafblade</button>
-        <button type="button" data-answer="Whiskervale">Spear</button>
-        <button type="button" data-answer="Steelburr">Gauntlets</button>
+      <div class="question">
+        <h3>3. Pick a weapon:</h3>
+        <div class="answers">
+          <button type="button" data-answer="Mabel">Sword</button>
+          <button type="button" data-answer="Flowerfoot">Leafblade</button>
+          <button type="button" data-answer="Whiskervale">Spear</button>
+          <button type="button" data-answer="Steelburr">Gauntlets</button>
+        </div>
       </div>
-    </div>
-    <div class="question">
-      <h3>4. Your pace:</h3>
-      <div class="answers">
-        <button type="button" data-answer="Mabel">Steady</button>
-        <button type="button" data-answer="Flowerfoot">Smooth</button>
-        <button type="button" data-answer="Whiskervale">Fast</button>
-        <button type="button" data-answer="Steelburr">Aggressive</button>
+      <div class="question">
+        <h3>4. Your pace:</h3>
+        <div class="answers">
+          <button type="button" data-answer="Mabel">Steady</button>
+          <button type="button" data-answer="Flowerfoot">Smooth</button>
+          <button type="button" data-answer="Whiskervale">Fast</button>
+          <button type="button" data-answer="Steelburr">Aggressive</button>
+        </div>
       </div>
-    </div>
-    <div class="question">
-      <h3>5. You're known for:</h3>
-      <div class="answers">
-        <button type="button" data-answer="Mabel">Loyalty</button>
-        <button type="button" data-answer="Flowerfoot">Discipline</button>
-        <button type="button" data-answer="Whiskervale">Strategy</button>
-        <button type="button" data-answer="Steelburr">Strength</button>
+      <div class="question">
+        <h3>5. You're known for:</h3>
+        <div class="answers">
+          <button type="button" data-answer="Mabel">Loyalty</button>
+          <button type="button" data-answer="Flowerfoot">Discipline</button>
+          <button type="button" data-answer="Whiskervale">Strategy</button>
+          <button type="button" data-answer="Steelburr">Strength</button>
+        </div>
       </div>
-    </div>
-    <div class="question">
-      <h3>6. Your flaw:</h3>
-      <div class="answers">
-        <button type="button" data-answer="Mabel">Stubborn</button>
-        <button type="button" data-answer="Flowerfoot">Cold</button>
-        <button type="button" data-answer="Whiskervale">Overthinking</button>
-        <button type="button" data-answer="Steelburr">Reckless</button>
+      <div class="question">
+        <h3>6. Your flaw:</h3>
+        <div class="answers">
+          <button type="button" data-answer="Mabel">Stubborn</button>
+          <button type="button" data-answer="Flowerfoot">Cold</button>
+          <button type="button" data-answer="Whiskervale">Overthinking</button>
+          <button type="button" data-answer="Steelburr">Reckless</button>
+        </div>
       </div>
-    </div>
-    <div class="question">
-      <h3>7. Choose one:</h3>
-      <div class="answers">
-        <button type="button" data-answer="Mabel">Honor</button>
-        <button type="button" data-answer="Flowerfoot">Focus</button>
-        <button type="button" data-answer="Whiskervale">Wit</button>
-        <button type="button" data-answer="Steelburr">Power</button>
+      <div class="question">
+        <h3>7. Choose one:</h3>
+        <div class="answers">
+          <button type="button" data-answer="Mabel">Honor</button>
+          <button type="button" data-answer="Flowerfoot">Focus</button>
+          <button type="button" data-answer="Whiskervale">Wit</button>
+          <button type="button" data-answer="Steelburr">Power</button>
+        </div>
       </div>
-    </div>
-    <button type="submit" id="submit">See Result</button>
-  </form>
+      <button type="submit" id="submit">See Result</button>
+    </form>
+  </div>
   <script>
     const quizForm = document.getElementById('quiz');
-    const selectedAnswers = [];
-
     quizForm.querySelectorAll('button[type="button"]').forEach(button => {
       button.addEventListener('click', () => {
         const group = button.closest('.answers');
@@ -140,7 +220,6 @@
       e.preventDefault();
       const selections = quizForm.querySelectorAll('.answers .selected');
       const count = {};
-
       selections.forEach(btn => {
         const val = btn.getAttribute('data-answer');
         count[val] = (count[val] || 0) + 1;
@@ -154,7 +233,6 @@
           topChar = char;
         }
       }
-
       window.location.href = `result.html?character=${topChar}`;
     });
   </script>
