@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -49,8 +49,13 @@
       min-height: 100vh;
     }
 
-    button {
+    .button-group {
+      display: flex;
+      gap: 1rem;
       margin-top: 20px;
+    }
+
+    button {
       padding: 10px 20px;
       font-size: 1rem;
       cursor: pointer;
@@ -61,7 +66,10 @@
   <main class="center">
     <h1>Your Cat</h1>
     <div id="catContainer"></div>
-    <button onclick="goBack()">Back</button>
+    <div class="button-group">
+      <button onclick="goBack()">Back</button>
+      <button onclick="goToWorks()">Current Work</button>
+    </div>
   </main>
 
   <script>
@@ -93,7 +101,10 @@
       window.location.href = 'Caption_Input.html';
     }
 
-    // Restore input on caption input page when navigated back
+    function goToWorks() {
+      window.location.href = 'Current_Work.html';
+    }
+
     window.addEventListener('DOMContentLoaded', () => {
       const captionInput = document.getElementById('captionInput');
       const storedCaption = sessionStorage.getItem('catCaption');
@@ -110,6 +121,3 @@
   </script>
 </body>
 </html>
-
-
-
