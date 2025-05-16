@@ -158,4 +158,42 @@
         <div class="column center">
           <a href="quiz.html"><button class="button">Go to Quiz</button></a>
         </div>
+      </article>
+
+      <article class="project">
+        <h2>Project 4: Divination</h2>
+        <p>Write your own caption in the text box below and click the button to generate a custom cat image with your caption displayed right on the photo. Whether it’s funny, sweet, or totally random, your words will appear as an overlay on a cute cat picture. Once you're done, you can view and save your personalized captioned cat.</p>
+        <div class="column center">
+          <span class="highlight-pink">Get A Cat</span>
+        </div>
+        <div class="column center">
+          <button onClick="divinationExp()" id="divinationButton">CAT</button>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <script>
+    const API_KEY = 'ylX4blBYT9FaoVd6OhvR';
+
+    function divinationExp() {
+      fetch('https://api.thecatapi.com/v1/images/search?limit=1', {
+        headers: { 'x-api-key': API_KEY }
+      })
+      .then(res => res.json())
+      .then(data => {
+        const imageUrl = data[0]?.url;
+        if (imageUrl) {
+          sessionStorage.setItem('catImageUrl', imageUrl);
+          window.location.href = 'Caption_Input.html';
+        } else {
+          alert('No image found.');
+        }
+      })
+      .catch(err => alert('Error: ' + err.message));
+    }
+  </script>
+</body>
+</html>
+
     
