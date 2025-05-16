@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Bloomburrow Character</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'MedievalSharp', cursive;
+      color: rgb(2, 48, 32);
+      padding: 2rem;
+      background-color: #eaf6f0;
+      text-align: center;
+    }
+    .result-box {
+      padding: 2rem;
+      background: white;
+      border-radius: 1rem;
+      display: inline-block;
+    }
+    h1 {
+      margin-bottom: 1rem;
+    }
+    .character-name {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+    .description {
+      margin-top: 1rem;
+      font-size: 30px;
+    }
+    #charImage {
+      display: none;
+      max-width: 100%;
+      margin-top: 1rem;
+    }
+    .try-again-button {
+      display: inline-block;
+      margin-top: 2rem;
+      padding: 10px 20px;
+      background-color: hotpink;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 25px;
+    }
+  </style>
+</head>
+<body>
+  <div class="result-box">
+    <h1>You Are...</h1>
+    <div class="character-name" id="charName"></div>
+    <img id="charImage" alt="Character Image">
+    <div class="description" id="charDesc"></div>
+  </div>
+
+  <div class="try-again-container">
+    <a href="quiz.html" class="try-again-button">Try Again</a>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const character = params.get('character');
+
+    const descriptions = {
+      Mabel: "Mabel, Heir to Cragflame – Brave, loyal, and the heart of every group.",
+      Flowerfoot: "Flowerfoot Swordmaster – Graceful and disciplined, a true nature-born warrior.",
+      Whiskervale: "Whiskervale Forerunner – Clever, fast, and always two steps ahead.",
+      Steelburr: "Steelburr Champion – Fierce and unstoppable, you charge into battle without fear."
+    };
+
+    const nameMap = {
+      Mabel: "Mabel, Heir to Cragflame",
+      Flowerfoot: "Flowerfoot Swordmaster",
+      Whiskervale: "Whiskervale Forerunner",
+      Steelburr: "Steelburr Champion"
+    };
+
+    document.getElementById('charName').textContent = nameMap[character] || "Unknown Character";
+    document.getElementById('charDesc').textContent = descriptions[character] || "Could not determine your result.";
+
+    const img = document.getElementById('charImage');
+    if (character === "Mabel") {
+      img.src = "mabel-card.png";
+      img.style.display = "block";
+    } else if (character === "Flowerfoot") {
+      img.src = "flowerfoot-card.png";
+      img.style.display = "block";
+    } else if (character === "Whiskervale") {
+      img.src = "whiskervale-card.png";
+      img.style.display = "block";
+    } else if (character === "Steelburr") {
+      img.src = "steelburr-card.png";
+      img.style.display = "block";
+    }
+  </script>
+</body>
+</html>
+
