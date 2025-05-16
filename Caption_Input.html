@@ -83,7 +83,7 @@
 
     <div class="button-container">
       <button onclick="saveCaption()">Save Caption</button>
-      <button onclick="goBack()">Try Another</button>
+      <button onclick="tryAgain()">Try Another</button>
     </div>
   </main>
 
@@ -111,16 +111,15 @@
       const newCaption = captionInput.value.trim();
       if (newCaption) {
         sessionStorage.setItem('catCaption', newCaption);
-        captionText.textContent = newCaption;
-        captionText.style.display = 'block';
-        captionInput.style.display = 'none';
+        window.location.href = 'Your_Cat.html';
       }
     }
 
-    function goBack() {
-      sessionStorage.removeItem('catImageUrl');
+    function tryAgain() {
       sessionStorage.removeItem('catCaption');
-      window.location.href = 'index.html';
+      captionInput.value = '';
+      captionInput.style.display = 'block';
+      captionText.style.display = 'none';
     }
   </script>
 </body>

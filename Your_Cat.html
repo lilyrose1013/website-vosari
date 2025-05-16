@@ -16,6 +16,7 @@
     .cat-wrapper img {
       width: 100%;
       border-radius: 12px;
+      cursor: pointer;
     }
 
     .caption-overlay {
@@ -29,6 +30,14 @@
       font-weight: bold;
       text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
       pointer-events: none;
+      opacity: 0;
+      animation: fadeIn 1.5s ease-in-out forwards;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
     }
 
     .center {
@@ -51,7 +60,7 @@
 <body>
   <main class="center">
     <h1>Your Cat</h1>
-    <div id="catContainer" class="cat-wrapper"></div>
+    <div id="catContainer"></div>
     <button onclick="goBack()">Back</button>
   </main>
 
@@ -61,24 +70,46 @@
     const catCaption = sessionStorage.getItem('catCaption') || 'Your caption here';
 
     if (catUrl) {
+      const wrapper = document.createElement('div');
+      wrapper.className = 'cat-wrapper';
+
       const img = document.createElement('img');
       img.src = catUrl;
       img.alt = 'Cat Image';
+      img.onclick = () => window.open(catUrl, '_blank');
 
       const caption = document.createElement('div');
       caption.className = 'caption-overlay';
       caption.textContent = catCaption;
 
-      container.appendChild(img);
-      container.appendChild(caption);
+      wrapper.appendChild(img);
+      wrapper.appendChild(caption);
+      container.appendChild(wrapper);
     } else {
       container.innerHTML = '<p>No cat image found. Please go back and try again.</p>';
     }
 
     function goBack() {
-      window.location.href = 'index.html';
+      window.location.href = 'Caption_Input.html';
     }
+
+    // Restore input on caption input page when navigated back
+    window.addEventListener('DOMContentLoaded', () => {
+      const captionInput = document.getElementById('captionInput');
+      const storedCaption = sessionStorage.getItem('catCaption');
+      if (captionInput && storedCaption) {
+        captionInput.value = storedCaption;
+      }
+
+      const catPreview = document.getElementById('previewImage');
+      const storedImage = sessionStorage.getItem('catImageUrl');
+      if (catPreview && storedImage) {
+        catPreview.src = storedImage;
+      }
+    });
   </script>
 </body>
 </html>
+
+
 
