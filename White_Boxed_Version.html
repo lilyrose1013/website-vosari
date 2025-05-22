@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Current Works & Captioned Cat</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wdth,wght@87.5,200..900&display=swap" rel="stylesheet" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      margin: 0;
+      background-color: #ffe6f0;
+      font-family: "Inconsolata", monospace;
+    }
+
+    main.content {
+      max-width: 600px;
+      margin: 5vh auto;
+      padding: 2rem;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
+      border-radius: 12px;
+      background-color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 1rem;
+      color: #333;
+    }
+
+    .gray-box {
+      position: relative;
+      width: 300px;
+      height: 300px;
+      background-color: #ccc;
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2rem;
+      color: #555;
+      font-weight: bold;
+    }
+
+    p.caption {
+      margin-top: 1.5rem;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #e91e63;
+    }
+
+    textarea {
+      width: 100%;
+      padding: 0.75rem;
+      margin-top: 1rem;
+      font-size: 1rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    .button-container {
+      margin-top: 2rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    button {
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      background-color: #e91e63;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #d81b60;
+    }
+
+    #divinationButton {
+      font-size: 1.25rem;
+      padding: 0.5rem 1rem;
+      background-color: hotpink !important;
+      color: white;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+    }
+
+    .highlight-pink {
+      background-color: hotpink;
+      color: white;
+      padding: 0.2em 0.4em;
+      border-radius: 0.2em;
+      font-size: 1.75em;
+    }
+
+    .iframe-container {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+
+    iframe {
+      width: 1000px;
+      height: 800px;
+      border: none;
+    }
+
+    .pdf-controls {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .pdf-controls a {
+      text-decoration: none;
+      padding: 0.75rem 1.5rem;
+      background-color: hotpink;
+      color: white;
+      border-radius: 0.5rem;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="navbar__container">
+      <a href="/" id="navbar__logo">Lily-Rose Vosari</a>
+      <div class="navbar__toggle" id="mobile-menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+      <ul class="navbar__menu">
+        <li class="navbar__item">
+          <a href="./index.html" class="navbar__links">Home</a>
+        </li>
+        <li class="navbar__item">
+          <a href="./About_me.html" class="navbar__links">About Me</a>
+        </li>
+        <li class="navbar__item">
+          <a href="./Current_Work.html" class="navbar__links">Current Work</a>
+        </li>
+        <li class="navbar__item">
+          <a href="./Past_Works.html" class="navbar__links">Past Works</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Captioned Cat Section -->
+  <main class="content">
+    <h1>Your Captioned Cat</h1>
+    <div class="gray-box">cat pic</div>
+
+    <p id="captionText" class="caption" style="display: none;"></p>
+    <textarea id="captionInput" placeholder="Type your caption here..."></textarea>
+
+    <div class="button-container">
+      <button onclick="saveCaption()">Save Caption</button>
+      <button onclick="tryAgain()">Try Another</button>
+    </div>
+  </main>
+
+  <script>
+    const caption = sessionStorage.getItem('catCaption');
+
+    const captionText = document.getElementById('captionText');
+    const captionInput = document.getElementById('captionInput');
+
+    if (caption && caption.trim() !== '') {
+      captionText.textContent = caption;
+      captionText.style.display = 'block';
+      captionInput.style.display = 'none';
+    } else {
+      captionText.style.display = 'none';
+      captionInput.style.display = 'block';
+    }
+
+    function tryAgain() {
+      sessionStorage.removeItem('catCaption');
+      captionInput.value = '';
+      captionInput.style.display = 'block';
+      captionText.style.display = 'none';
+    }
+  </script>
+</body>
+</html>
+
+
