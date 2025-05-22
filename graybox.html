@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: monospace;
+      padding: 2rem;
+      margin: 0;
+    }
+    h1 {
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .question {
+      margin-bottom: 1.5rem;
+      width: 100%;
+    }
+    .question h3 {
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+    }
+    .answers {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    .answers button {
+      border: 1px solid #000;
+      background: none;
+      border-radius: 5px;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+    }
+    .answers button.selected {
+      background: #000;
+      color: #fff;
+    }
+    .quiz-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      max-width: 650px;
+      margin: 2rem auto;
+      padding: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="navbar__container">
+      <a href="/" id="navbar__logo">Lily-Rose Vosari</a>
+      <div class="navbar__toggle" id="mobile-menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+      <ul class="navbar__menu">
+        <li class="navbar__item">
+          <a href="./index.html" class="navbar__links">Home</a>
+        </li>
+        <li class="navbar__item">
+          <a href="./About_me.html" class="navbar__links">About Me</a>
+        </li>
+        <li class="navbar__item">
+          <a href="./Current_Work.html" class="navbar__links">Current Work</a>
+        </li>
+        <li class="navbar__item">
+          <a href="./Past_Works.html" class="navbar__links">Past Works</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="quiz-container">
+    <h1>Which Magic the Gathering Bloomburrow Character Are You?</h1>
+    <form id="quiz">
+      <div class="question">
+        <h3>1. Your strength?</h3>
+        <div class="answers">
+          <button type="button" data-answer="Mabel"></button>
+          <button type="button" data-answer="Flowerfoot"></button>
+          <button type="button" data-answer="Whiskervale"></button>
+          <button type="button" data-answer="Steelburr"></button>
+        </div>
+      </div>
+      <div class="question">
+        <h3>2. Favorite place?</h3>
+        <div class="answers">
+          <button type="button" data-answer="Mabel"></button>
+          <button type="button" data-answer="Flowerfoot"></button>
+          <button type="button" data-answer="Whiskervale"></button>
+          <button type="button" data-answer="Steelburr"></button>
+        </div>
+      </div>
+      <div class="question">
+        <h3>3. Pick a weapon:</h3>
+        <div class="answers">
+          <button type="button" data-answer="Mabel"></button>
+          <button type="button" data-answer="Flowerfoot"></button>
+          <button type="button" data-answer="Whiskervale"></button>
+          <button type="button" data-answer="Steelburr"></button>
+        </div>
+      </div>
+      <div class="question">
+        <h3>4. Your pace:</h3>
+        <div class="answers">
+          <button type="button" data-answer="Mabel"></button>
+          <button type="button" data-answer="Flowerfoot"></button>
+          <button type="button" data-answer="Whiskervale"></button>
+          <button type="button" data-answer="Steelburr"></button>
+        </div>
+      </div>
+      <div class="question">
+        <h3>5. You're known for:</h3>
+        <div class="answers">
+          <button type="button" data-answer="Mabel"></button>
+          <button type="button" data-answer="Flowerfoot"></button>
+          <button type="button" data-answer="Whiskervale"></button>
+          <button type="button" data-answer="Steelburr"></button>
+        </div>
+      </div>
+      <div class="question">
+        <h3>6. Your flaw:</h3>
+        <div class="answers">
+          <button type="button" data-answer="Mabel"></button>
+          <button type="button" data-answer="Flowerfoot"></button>
+          <button type="button" data-answer="Whiskervale"></button>
+          <button type="button" data-answer="Steelburr"></button>
+        </div>
+      </div>
+      <div class="question">
+        <h3>7. Choose one:</h3>
+        <div class="answers">
+          <button type="button" data-answer="Mabel"></button>
+          <button type="button" data-answer="Flowerfoot"></button>
+          <button type="button" data-answer="Whiskervale"></button>
+          <button type="button" data-answer="Steelburr"></button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <script>
+    const quizForm = document.getElementById('quiz');
+    const allButtons = quizForm.querySelectorAll('button[type="button"]');
+
+    allButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const group = button.closest('.answers');
+        group.querySelectorAll('button').forEach(btn => btn.classList.remove('selected'));
+        button.classList.add('selected');
+      });
+    });
+  </script>
+</body>
+</html>
