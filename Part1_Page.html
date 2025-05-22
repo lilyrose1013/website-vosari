@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Current Works</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wdth,wght@87.5,200..900&display=swap" rel="stylesheet" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    #divinationButton {
+      font-size: 2.5rem;
+      padding: 1rem 2rem;
+      background-color: hotpink !important;
+      color: white;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+    }
+
+    .highlight-pink {
+      background-color: hotpink;
+      color: white;
+      padding: 0.2em 0.4em;
+      border-radius: 0.2em;
+      font-size: 1.75em;
+    }
+
+    .iframe-container {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+
+    iframe {
+      width: 1000px;
+      height: 800px;
+      border: none;
+    }
+
+    .pdf-controls {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .pdf-controls a {
+      text-decoration: none;
+      padding: 0.75rem 1.5rem;
+      background-color: hotpink;
+      color: white;
+      border-radius: 0.5rem;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="navbar__container">
+      <a href="/" id="navbar__logo">Lily-Rose Vosari</a>
+      <div class="navbar__toggle" id="mobile-menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+      <ul class="navbar__menu">
+        <li class="navbar__item">
+          <a href="./index.html" class="navbar__links">Home</a>
+        </li>
+        <li class="navbar__item">
+          <a href="./About_me.html" class="navbar__links">About Me</a>
+        </li>
+        <li class="navbar__item">
+          <a href="./Current_Work.html" class="navbar__links">Current Work</a>
+        </li>
+        <li class="navbar__item">
+          <a href="./Past_Works.html" class="navbar__links">Past Works</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- PDF Viewer & Download Section -->
+  <section class="pdf-controls">
+    <h2>Download PDF</h2>
+    <a href="Project_2.pdf" download>Download PDF</a>
+    <iframe src="Project_2.pdf"></iframe>
+  </section>
+</body>
+</html>
+
