@@ -35,7 +35,7 @@
   }
   
   #navbar__logo {
-    background: linear-gradient(to top, #ae00ff 0%, #edb4eb 100%);
+    background: linear-gradient(to top, #EA785B 0%, #EA785B 100%);
     -webkit-background-clip: text;
     -moz-background-clip: text;
     background-clip: text;
@@ -50,7 +50,14 @@
     font-weight: bold;
     white-space: nowrap;
   }
-  
+  .navbar__links:hover {
+    color: #a9599b;
+}
+
+#navbar__logo:hover {
+    color: #a9599b;
+}
+
   .navbar__menu {
     display: flex;
     align-items: center;
