@@ -5,20 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lily Vosari Portfolio</title>
     
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wdth,wght@87.5,200..900&display=swap" rel="stylesheet" />
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bonbon&display=swap" rel="stylesheet">
     
     <!-- CSS -->
     <link rel="stylesheet" href="style.css" />
 </head>
-<body>
+<body class="systems-arizonia">
 
     <!-- Navigation -->
     <nav class="navbar">
-        <div class="navbar__container">
-            <a href="/" id="navbar__logo">Lily-Rose Vosari</a>
+        <div class="navbar__container" style="justify-content: flex-start;">
+            <a href="/" id="navbar__logo" style="margin-right: 40px;">Lily-Rose Vosari</a>
             <div class="navbar__toggle" id="mobile-menu">
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -43,3 +42,19 @@
             </ul>
         </div>
     </nav>
+
+    <style>
+        #navbar__logo {
+          font-family: 'Bonbon', cursive, sans-serif;
+          font-size: 20pt;
+        }
+        .navbar__links {
+          font-family: 'Bonbon', cursive, sans-serif;
+          font-size: 20pt;
+          color: #eb5ddc; /* Matches Current_Work.html link color */
+          background: none;
+        }
+        .navbar__links:hover {
+          color: #ae00ff; /* Example hover color from Current_Work.html */
+        }
+    </style>
