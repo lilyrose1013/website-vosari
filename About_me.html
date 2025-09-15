@@ -5,20 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>About Me - Lily-Rose Vosari</title>
     
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wdth,wght@87.5,200..900&display=swap" rel="stylesheet" />
-
-    <!-- External CSS -->
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bonbon&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css" />
 </head>
-<body>
+<body class="systems-arizonia">
 
     <!-- Navigation -->
     <nav class="navbar">
-        <div class="navbar__container">
-            <a href="/" id="navbar__logo">Lily-Rose Vosari</a>
+        <div class="navbar__container" style="justify-content: flex-start;">
+            <a href="/" id="navbar__logo" style="margin-right: 40px;">Lily-Rose Vosari</a>
             <div class="navbar__toggle" id="mobile-menu">
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -26,7 +25,7 @@
             </div>
             <ul class="navbar__menu">
                 <li class="navbar__item">
-                    <a href="/" class="navbar__links">Home</a>
+                    <a href="./index.html" class="navbar__links">Home</a>
                 </li>
                 <li class="navbar__item">
                     <a href="./About_me.html" class="navbar__links">About Me</a>
@@ -40,9 +39,25 @@
                 <li class="navbar__item">
                     <a href="./Systems_Lab_2025.html" class="navbar__links">Systems Lab: Fall 2025</a>
                 </li>
+            </ul>
         </div>
     </nav>
 
+    <style>
+        #navbar__logo {
+          font-family: 'Bonbon', cursive, sans-serif;
+          font-size: 20pt;
+        }
+        .navbar__links {
+          font-family: 'Bonbon', cursive, sans-serif;
+          font-size: 20pt;
+          color: #eb5ddc; /* Matches Current_Work.html link color */
+          background: none;
+        }
+        .navbar__links:hover {
+          color: #ae00ff; /* Example hover color from Current_Work.html */
+        }
+    </style>
     <!-- About Section -->
     <main class="about-section">
         <div class="column right">
